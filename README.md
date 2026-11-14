@@ -84,6 +84,17 @@ cctv-detection-web/
 - Node.js 18+ (LTS recommended)
 - npm, pnpm, or yarn
 
+### Auto-download (postinstall)
+Running 
+pm install automatically:
+1. Copies the ONNX Runtime WASM files from 
+ode_modules/onnxruntime-web/dist to public/ort/
+2. Downloads yolo26s.onnx (~38MB) from the GitHub release to public/models/
+
+If the download fails (network/firewall), download manually from:
+https://github.com/BilalAjmad/cctv-detect-ai/releases/download/v1.0.0/yolo26s.onnx
+and place it in public/models/yolo26s.onnx.
+
 ### Windows
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git

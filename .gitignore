@@ -5,7 +5,5 @@ dist/
 .env.local
 .DS_Store
 Thumbs.db
-public/models/*.onnx
-public/ort/*.wasm
-public/ort/*.mjs
-public/ort/*.js
+public/models/
+public/ort/
