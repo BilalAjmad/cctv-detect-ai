@@ -130,8 +130,11 @@ The app is a PWA-ready web app. Open the deployed URL in any mobile browser. For
 - Grant camera permission
 - Works in portrait and landscape
 
-### Web Containers (StackBlitz / CodeSandbox)
-The project runs in web containers. The large model files (public/models/, public/ort/) may need to be downloaded separately. Place them in the correct directories.
+### Instant Web Access (No Install)
+Open in any browser, no installation needed:
+**https://bilalajmad.github.io/cctv-detect-ai/**
+
+The app runs fully client-side. Camera permission required.
 
 ## Releases
 
@@ -139,7 +142,34 @@ The project runs in web containers. The large model files (public/models/, publi
 Deploy `dist/` to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages). The app works offline after first load (model cached).
 
 ### Desktop (Windows/macOS/Linux)
-Wrap with Electron or Tauri for a native desktop app. The web build is the source.
+Tauri v2 is pre-configured (src-tauri/). To build:
+`ash
+npm install -g @tauri-apps/cli
+npm run build
+tauri build
+`
+Output: src-tauri/target/release/bundle/ (MSI/NSIS on Windows, DMG on macOS, AppImage on Linux).
+Note: Requires Rust toolchain (rustup) and platform SDK.
+
+### Mobile (Android)
+Capacitor is not pre-configured. To add:
+`ash
+npm install @capacitor/core @capacitor/cli @capacitor/android
+npx cap add android
+npx cap sync
+npx cap open android   # opens Android Studio
+`
+Requires Android Studio + JDK 17+.
+Build APK from Android Studio or ./gradlew assembleRelease.
+
+### Mobile (iOS)
+Requires macOS + Xcode:
+`ash
+npm install @capacitor/core @capacitor/cli @capacitor/ios
+npx cap add ios
+npx cap sync
+npx cap open ios
+`
 
 ### Mobile
 Install as PWA or wrap with Capacitor/Cordova for native app stores.
