@@ -80,7 +80,10 @@ cctv-detection-web/
 
 ## Installation
 
-### Windows
+### Web (Instant - No Install)
+Open in browser: https://bilalajmad.github.io/cctv-detect-ai/
+
+### Desktop (Windows/macOS/Linux)
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
 cd cctv-detect-ai
@@ -91,20 +94,25 @@ npm run test         # unit tests
 npm run lint         # ESLint
 ```
 
-### macOS
+### Mobile (Android APK)
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
 cd cctv-detect-ai
 npm install
-npm run dev
+npm run cap:build:android
 ```
+Output: `android/app/build/outputs/apk/release/app-release.apk`
 
-### Linux
+### Mobile (iOS)
+Requires macOS + Xcode:
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
 cd cctv-detect-ai
 npm install
-npm run dev
+npm install @capacitor/core @capacitor/cli @capacitor/ios
+npx cap add ios
+npx cap sync
+npx cap open ios
 ```
 
 The AI model (YOLO26s, ~38MB) auto-downloads from the GitHub release during `npm install`.
