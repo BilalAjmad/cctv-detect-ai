@@ -1,7 +1,5 @@
 # CCTV Detect
 
-**Live Demo:** https://bilalajmad.github.io/cctv-detect-ai/
-
 Real-time CCTV object detection that runs entirely in your browser. Powered by YOLO26s via onnxruntime-web, with inference offloaded to a Web Worker for zero main-thread blocking. No server, no cloud, no API keys.
 
 ![Demo](demo.gif)
@@ -158,7 +156,7 @@ npm run lint         # ESLint (0 errors)
 npm run build        # TypeScript + Vite build
 ```
 
-## Live Demo
+## Use Online
 
 Open in browser: https://bilalajmad.github.io/cctv-detect-ai/
 
