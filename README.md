@@ -1,5 +1,7 @@
 # CCTV Detect
 
+**Live Demo:** https://bilalajmad.github.io/cctv-detect-ai/
+
 Real-time CCTV object detection that runs entirely in your browser. Powered by YOLO26s via onnxruntime-web, with inference offloaded to a Web Worker for zero main-thread blocking. No server, no cloud, no API keys.
 
 ![Demo](demo.gif)
@@ -80,10 +82,7 @@ cctv-detection-web/
 
 ## Installation
 
-### Web (Instant - No Install)
-Open in browser: https://bilalajmad.github.io/cctv-detect-ai/
-
-### Desktop (Windows/macOS/Linux)
+### Windows
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
 cd cctv-detect-ai
@@ -94,25 +93,20 @@ npm run test         # unit tests
 npm run lint         # ESLint
 ```
 
-### Mobile (Android APK)
+### macOS
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
 cd cctv-detect-ai
 npm install
-npm run cap:build:android
+npm run dev
 ```
-Output: `android/app/build/outputs/apk/release/app-release.apk`
 
-### Mobile (iOS)
-Requires macOS + Xcode:
+### Linux
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
 cd cctv-detect-ai
 npm install
-npm install @capacitor/core @capacitor/cli @capacitor/ios
-npx cap add ios
-npx cap sync
-npx cap open ios
+npm run dev
 ```
 
 The AI model (YOLO26s, ~38MB) auto-downloads from the GitHub release during `npm install`.
@@ -164,7 +158,7 @@ npm run lint         # ESLint (0 errors)
 npm run build        # TypeScript + Vite build
 ```
 
-## Use Online
+## Live Demo
 
 Open in browser: https://bilalajmad.github.io/cctv-detect-ai/
 
