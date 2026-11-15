@@ -22,25 +22,25 @@ Real-time CCTV object detection that runs entirely in your browser. Powered by Y
 ## Architecture
 
 ```
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+  Browser (Main Thread)                                      +
-+  ++++++++++++++++  ++++++++++++++++  ++++++++++++++++++++  +
-+  + Camera       +  + Render Loop  +  + UI (React)       +  +
-+  + (getUserMedia)+  + Canvas 60fps +  + Sidebar/Controls +  +
-+  ++++++++++++++++  ++++++++++++++++  ++++++++++++++++++++  +
-+         +                 +                                  +
-+         +  ImageData       +  lastDetsRef                    +
-+         v                 v                                  +
-+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++    +
-+  + Web Worker (off-main-thread)                      +    +
-+  +  onnxruntime-web (WASM) -> YOLO26s inference       +    +
-+  +  Letterbox preprocess -> NMS postprocess            +    +
-+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++    +
-+         +                                                    +
-+         +  Detection[]                                       +
-+         v                                                    +
-+  CentroidTracker -> HeatmapGrid -> Alerts -> UI state           +
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++-----------------------------------------------------------------+
+|  Browser (Main Thread)                                          |
+|  +------------------+  +------------------+  +----------------+  |
+|  | Camera           |  | Render Loop    |  | UI (React)     |  |
+|  | (getUserMedia)   |  | Canvas 60fps   |  | Sidebar/Controls | |
+|  ++++++++++++++++++  ++++++++++++++++++  ++++++++++++++++++++  |
+|         |                 |                                         |
+|         |  ImageData       |  lastDetsRef                          |
+|         v                 v                                         |
+|  +-----------------------------------------------------------------+  |
+|  | Web Worker (off-main-thread)                              |    |
+|  |  onnxruntime-web (WASM) -> YOLO26s inference              |    |
+|  |  Letterbox preprocess -> NMS postprocess                  |    |
+|  +-----------------------------------------------------------+    |
+|         |                                                         |
+|         |  Detection[]                                           |
+|         v                                                         |
+|  CentroidTracker -> HeatmapGrid -> Alerts -> UI state                |
++------------------------------------------------------------------+
 ```
 
 ### Tech Stack
@@ -82,11 +82,6 @@ cctv-detection-web/
 
 ## Installation
 
-### Prerequisites
-- Node.js 18+ (LTS recommended)
-- npm, pnpm, or yarn
-
-
 ### Windows
 ```bash
 git clone https://github.com/BilalAjmad/cctv-detect-ai.git
@@ -114,19 +109,8 @@ npm install
 npm run dev
 ```
 
-### Mobile (Android/iOS)
-The app is a PWA-ready web app. Open the deployed URL in any mobile browser. For best experience:
-- Use Chrome (Android) or Safari (iOS)
-- Grant camera permission
-- Works in portrait and landscape
-
-### Run Instantly (No Install)
-Click below to open and run the full project in your browser via WebContainers:
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/BilalAjmad/cctv-detect-ai)
-
-No download, no setup. The AI model auto-downloads on first run.
-
+The AI model (YOLO26s, ~38MB) auto-downloads from the GitHub release during `npm install`.
+No manual download needed.
 
 ## Technologies
 
@@ -137,7 +121,7 @@ No download, no setup. The AI model auto-downloads on first run.
 - **YOLO26s** -- Object detection model (ONNX format)
 - **Web Workers** -- Off-main-thread inference
 - **MediaRecorder API** -- CCTV recording
-- **Canvas API** -- Rendering, heatmap, thermal, privacy blur
+- **Canvas API** -- Rendering, heatmap, thermal
 - **FaceDetector API** -- Native face detection (Chrome/Edge)
 - **Vitest 2** -- Unit testing
 - **jsdom** -- DOM testing environment
@@ -174,18 +158,10 @@ npm run lint         # ESLint (0 errors)
 npm run build        # TypeScript + Vite build
 ```
 
-## Demo Video
+## Live Demo
 
-![Demo](demo.gif)
-
-Full 15-second launch video: [demo.mp4](demo.mp4)
+https://bilalajmad.github.io/cctv-detect-ai/
 
 ## License
 
 MIT
-
-## Credits
-
-- YOLO26s model by Ultralytics
-- onnxruntime-web by Microsoft
-- Icons and design by the author
